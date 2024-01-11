@@ -1,0 +1,44 @@
+.riddle {
+  background-image: url(../../images/riddles-background.jpeg);
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__text {
+    font-family: Lugrasimo;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2rem;
+    color: white;
+    align-self: flex-start;
+    padding: 0 5rem;
+  }
+
+  &__options {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    padding: 0rem 5rem;
+  }
+
+  &__answer {
+    background: transparent;
+    color: white;
+    border: none;
+    padding: 5rem 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    font-family: Lugrasimo;
+    font-size: 2rem;
+    height: 3rem;
+    width: 4rem;
+  }
+}

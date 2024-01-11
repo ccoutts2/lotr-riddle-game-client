@@ -50,8 +50,8 @@ const Game = () => {
   if (isError) {
     return (
       <p>
-        A dark presence sweeps over the cave - the necromancer has blocked your war
-        cry...contact Gollum for support
+        A dark presence sweeps over the cave - the necromancer has blocked your
+        war cry...contact Gollum for support
       </p>
     );
   }
@@ -62,7 +62,6 @@ const Game = () => {
 
   return (
     <main>
-      <h1>Game Page</h1>
       <Riddle riddle={riddle} onClick={onClick} />
     </main>
   );
