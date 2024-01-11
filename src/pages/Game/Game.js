@@ -4,7 +4,7 @@ import axios from "axios";
 import Riddle from "../../components/Riddle/Riddle";
 
 const Game = () => {
-  const baseURL = "http://localhost:5050";
+  const baseURL = "http://localhost:8000";
 
   const [riddle, setRiddle] = useState(null);
   const [gameOver, setGameOver] = useState(false);
@@ -13,7 +13,7 @@ const Game = () => {
 
   const fetchRiddle = async () => {
     try {
-      const { data } = await axios.get(`${baseURL}/game`);
+      const { data } = await axios.get(`${baseURL}/riddles`);
       setRiddle(data);
     } catch (error) {
       console.log(error);
@@ -27,11 +27,16 @@ const Game = () => {
   //   function to randomise the riddle - Math.floor(Math.random(riddle)
 
   if (isError) {
-    return <p>Poor connection from within the cave...contact Gollum for support</p>;
+    return (
+      <p>
+        A dark presence sweeps over the cave the necromancer has blocked your war
+        cry...contact Gollum for support
+      </p>
+    );
   }
 
   if (!riddle) {
-    return <p>Loading...</p>;
+    return <p>Gollum is thinking of a riddle...</p>;
   }
 
   return (
