@@ -43,8 +43,8 @@ const Game = () => {
     }
   };
 
-  if (correctAnswer > 7) {
-    return <p>You've won</p>;
+  if (correctAnswer > 1) {
+    return <p>{navigate("/winner")}</p>;
   }
 
   if (isError) {

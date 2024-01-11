@@ -1,7 +1,7 @@
 const Loser = () => {
   return (
     <main>
-      <h1>Hello World</h1>
+      <h1>Hello Loser</h1>
     </main>
   );
 };
