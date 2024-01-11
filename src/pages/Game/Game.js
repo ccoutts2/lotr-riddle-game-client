@@ -2,6 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Riddle from "../../components/Riddle/Riddle";
+import "./game.scss";
 
 const Game = () => {
   const navigate = useNavigate();
@@ -50,8 +51,8 @@ const Game = () => {
   if (isError) {
     return (
       <p>
-        A dark presence sweeps over the cave - the necromancer has blocked your war
-        cry...contact Gollum for support
+        A dark presence sweeps over the cave - the necromancer has blocked your
+        war cry...contact Gollum for support
       </p>
     );
   }
@@ -61,8 +62,7 @@ const Game = () => {
   }
 
   return (
-    <main>
-      <h1>Game Page</h1>
+    <main className="game">
       <Riddle riddle={riddle} onClick={onClick} />
     </main>
   );
