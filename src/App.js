@@ -7,14 +7,16 @@ import Loser from "./pages/Loser/Loser";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/game" element={<Game />} />
-        <Route path="/winner" element={<Winner />} />
-        <Route path="/loser" element={<Loser />} />
-      </Routes>
-    </BrowserRouter>
+    <div className="app">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/game" element={<Game />} />
+          <Route path="/winner" element={<Winner />} />
+          <Route path="/loser" element={<Loser />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 

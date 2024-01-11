@@ -2,6 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Riddle from "../../components/Riddle/Riddle";
+import "./game.scss";
 
 const Game = () => {
   const navigate = useNavigate();
@@ -61,7 +62,7 @@ const Game = () => {
   }
 
   return (
-    <main>
+    <main className="game">
       <Riddle riddle={riddle} onClick={onClick} />
     </main>
   );

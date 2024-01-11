@@ -1,11 +1,8 @@
-import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
-import axios from "axios";
 import "./riddle.scss";
 
 const Riddle = ({ riddle, onClick }) => {
   return (
-    <main className="riddle">
+    <section className="riddle">
       <div className="riddle__wrap">
         <p className="riddle__text">{riddle.riddle}</p>
         <ul className="riddle__options">
@@ -23,7 +20,7 @@ const Riddle = ({ riddle, onClick }) => {
           })}
         </ul>
       </div>
-    </main>
+    </section>
   );
 };
 
