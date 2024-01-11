@@ -11,13 +11,11 @@ const Game = () => {
   const [gameOver, setGameOver] = useState(false);
   const [correctAnswer, setCorrectAnswer] = useState(0);
   const [isError, setIsError] = useState(false);
+  const [riddleId, setRiddleId] = useState(1);
 
   const fetchRiddle = async () => {
-    const randomNum = Math.floor(Math.random() * 8 + 1);
-    console.log(randomNum);
-
     try {
-      const { data } = await axios.get(`${baseURL}/riddles/${randomNum}`);
+      const { data } = await axios.get(`${baseURL}/riddles/${riddleId}`);
       setRiddle(data);
     } catch (error) {
       console.log(error);
@@ -36,6 +34,8 @@ const Game = () => {
   const onClick = (answer) => {
     if (answer === riddle.correct) {
       updateGameState();
+      let riddleIdCounter = riddleId + 1;
+      setRiddleId(riddleIdCounter);
       fetchRiddle();
     } else {
       setGameOver(true);
@@ -43,7 +43,7 @@ const Game = () => {
     }
   };
 
-  if (correctAnswer > 1) {
+  if (correctAnswer > 7) {
     return <p>{navigate("/winner")}</p>;
   }
 
