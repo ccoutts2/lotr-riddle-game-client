@@ -5,7 +5,7 @@ import Riddle from "../../components/Riddle/Riddle";
 
 const Game = () => {
   const navigate = useNavigate();
-  const baseURL = "http://localhost:8000";
+  const baseURL = process.env.REACT_APP_API_URL;
 
   const [riddle, setRiddle] = useState(null);
   const [gameOver, setGameOver] = useState(false);
@@ -29,15 +29,15 @@ const Game = () => {
   }, []);
 
   const handleSubmit = () => {
-    if (data.answers.answer === data.correct) {
+    if (riddle.answers.answer === riddle.correct) {
       fetchRiddle();
     } else {
-      setGameOver(false);
+      setGameOver(true);
       navigate("/");
     }
   };
 
-  handleSubmit();
+  //   handleSubmit();
 
   if (isError) {
     return (
@@ -55,7 +55,7 @@ const Game = () => {
   return (
     <main>
       <h1>Game Page</h1>
-      <Riddle />
+      <Riddle riddle={riddle} handleSubmit={handleSubmit} />
     </main>
   );
 };
