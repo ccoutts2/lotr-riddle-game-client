@@ -1,19 +1,23 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Riddle from "../../components/Riddle/Riddle";
 
 const Game = () => {
+  const navigate = useNavigate();
   const baseURL = "http://localhost:8000";
 
   const [riddle, setRiddle] = useState(null);
   const [gameOver, setGameOver] = useState(false);
-  const [correctAnswers, setCorrectAnswers] = useState(0);
+  const [correctAnswer, setCorrectAnswer] = useState(0);
   const [isError, setIsError] = useState(false);
 
   const fetchRiddle = async () => {
+    const randomNum = Math.floor(Math.random() * 8 + 1);
+    console.log(randomNum);
+
     try {
-      const { data } = await axios.get(`${baseURL}/riddles`);
+      const { data } = await axios.get(`${baseURL}/riddles/${randomNum}`);
       setRiddle(data);
     } catch (error) {
       console.log(error);
@@ -24,12 +28,21 @@ const Game = () => {
     fetchRiddle();
   }, []);
 
-  //   function to randomise the riddle - Math.floor(Math.random(riddle)
+  const handleSubmit = () => {
+    if (data.answers.answer === data.correct) {
+      fetchRiddle();
+    } else {
+      setGameOver(false);
+      navigate("/");
+    }
+  };
+
+  handleSubmit();
 
   if (isError) {
     return (
       <p>
-        A dark presence sweeps over the cave the necromancer has blocked your war
+        A dark presence sweeps over the cave - the necromancer has blocked your war
         cry...contact Gollum for support
       </p>
     );
