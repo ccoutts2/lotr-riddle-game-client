@@ -28,16 +28,24 @@ const Game = () => {
     fetchRiddle();
   }, []);
 
-  const handleSubmit = () => {
-    if (riddle.answers.answer === riddle.correct) {
+  const updateGameState = () => {
+    let correctAnswers = correctAnswer + 1;
+    setCorrectAnswer(correctAnswers);
+  };
+
+  const onClick = (answer) => {
+    if (answer === riddle.correct) {
+      updateGameState();
       fetchRiddle();
     } else {
       setGameOver(true);
-      navigate("/");
+      navigate("/loser");
     }
   };
 
-  //   handleSubmit();
+  if (correctAnswer > 7) {
+    return <p>You've won</p>;
+  }
 
   if (isError) {
     return (
@@ -55,7 +63,7 @@ const Game = () => {
   return (
     <main>
       <h1>Game Page</h1>
-      <Riddle riddle={riddle} handleSubmit={handleSubmit} />
+      <Riddle riddle={riddle} onClick={onClick} />
     </main>
   );
 };
